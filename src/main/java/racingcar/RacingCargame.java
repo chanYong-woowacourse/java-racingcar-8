@@ -1,19 +1,32 @@
 package racingcar;
-import java.util.List;
 
 public class RacingCargame {
-    InputView inputView;
-    OutputView outputView;
-    RaceWinnerChecker winnerChecker;
-    List<Car> car;
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final RaceWinnerChecker winnerChecker;
+
+    private String carNamesRaw;
+    private int attempts;
 
     public RacingCargame() {
-        inputView = new InputView();
-        outputView = new OutputView();
-        winnerChecker = new RaceWinnerChecker();
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
+        this.winnerChecker = new RaceWinnerChecker();
     }
 
-    public void play(){
-        // 게임 로직 구현
+    public void play() {
+        readInput();
+        System.out.println("\n입력받은 자동차 이름: " + carNamesRaw);
+        System.out.println("시도 횟수: " + attempts);
+    }
+    private void readInput() {
+        this.carNamesRaw = inputView.getCarNames();
+        String tryCountRaw = inputView.getTryCount();
+
+        InputValidator.validateCarNames(carNamesRaw);
+        InputValidator.validateTryCount(tryCountRaw);
+
+        this.attempts = Integer.parseInt(tryCountRaw);
+
     }
 }
