@@ -25,6 +25,7 @@ public class RacingCarGame {
             System.out.println("- " + car.getName());
         }
         System.out.println("시도 횟수: " + attempts);
+        runRace();
     }
     private void readInput() {
         String carNamesInput = inputView.getCarNames();
@@ -42,5 +43,26 @@ public class RacingCarGame {
             cars.add(new Car(name.trim()));
         }
     }
+    private void runRace() {
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < attempts; i++) {
+            moveAllCars();
+            printRoundResult();
+        }
+    }
+
+    private void moveAllCars() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    private void printRoundResult() {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+        System.out.println();
+    }
+
 
 }
