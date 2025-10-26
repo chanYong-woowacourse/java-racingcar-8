@@ -49,6 +49,7 @@ public class RacingCarGame {
             moveAllCars();
             printRoundResult();
         }
+        printWinners();
     }
 
     private void moveAllCars() {
@@ -64,5 +65,13 @@ public class RacingCarGame {
         System.out.println();
     }
 
+    private void printWinners() {
+        List<Car> winners = winnerChecker.findWinners(cars);
+        List<String> winnerNames = new ArrayList<>();
+        for (Car winner : winners) {
+            winnerNames.add(winner.getName());
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winnerNames));
+    }
 
 }
