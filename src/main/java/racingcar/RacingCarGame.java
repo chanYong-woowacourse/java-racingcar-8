@@ -20,11 +20,6 @@ public class RacingCarGame {
 
     public void play() {
         readInput();
-        System.out.println("생성된 자동차 목록:");
-        for (Car car : cars) {
-            System.out.println("- " + car.getName());
-        }
-        System.out.println("시도 횟수: " + attempts);
         runRace();
     }
     private void readInput() {
@@ -44,10 +39,10 @@ public class RacingCarGame {
         }
     }
     private void runRace() {
-        System.out.println("\n실행 결과");
+        outputView.printRaceStart();
         for (int i = 0; i < attempts; i++) {
             moveAllCars();
-            printRoundResult();
+            outputView.printRoundResult(cars);
         }
         printWinners();
     }
@@ -71,7 +66,6 @@ public class RacingCarGame {
         for (Car winner : winners) {
             winnerNames.add(winner.getName());
         }
-        System.out.println("최종 우승자 : " + String.join(", ", winnerNames));
+        outputView.printWinners(winnerNames);
     }
-
 }
