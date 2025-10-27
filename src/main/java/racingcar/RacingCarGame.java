@@ -3,6 +3,10 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 자동차 경주 게임의 전체 흐름을 제어하는 클래스
+ * - 입력 받기 → 경주 진행 → 우승자 발표
+ */
 public class RacingCarGame {
     private final InputView inputView;
     private final OutputView outputView;
@@ -22,6 +26,7 @@ public class RacingCarGame {
         readInput();
         runRace();
     }
+
     private void readInput() {
         String carNamesInput = inputView.getCarNames();
         String tryCountInput = inputView.getTryCount();
@@ -32,12 +37,14 @@ public class RacingCarGame {
         this.attempts = Integer.parseInt(tryCountInput);
         createCars(carNamesInput);
     }
+
     private void createCars(String carNamesInput) {
         String[] names = carNamesInput.split(",");
         for (String name : names) {
             cars.add(new Car(name.trim()));
         }
     }
+
     private void runRace() {
         outputView.printRaceStart();
         for (int i = 0; i < attempts; i++) {
@@ -51,13 +58,6 @@ public class RacingCarGame {
         for (Car car : cars) {
             car.move();
         }
-    }
-
-    private void printRoundResult() {
-        for (Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-        }
-        System.out.println();
     }
 
     private void printWinners() {

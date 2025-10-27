@@ -3,6 +3,11 @@ package racingcar;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 사용자 입력값의 유효성을 검증하는 클래스
+ * - 자동차 이름: 5자 이하, 중복 불가
+ * - 시도 횟수: 1 이상의 숫자
+ */
 public class InputValidator {
     private static final int MAX_NAME_LENGTH = 5;
 

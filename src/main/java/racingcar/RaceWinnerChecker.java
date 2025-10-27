@@ -3,6 +3,10 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 경주 우승자를 판정하는 클래스
+ * - 가장 멀리 이동한 자동차들을 찾음
+ */
 public class RaceWinnerChecker {
     public List<Car> findWinners(List<Car> cars) {
         int maxPosition = findMaxPosition(cars);

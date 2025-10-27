@@ -2,6 +2,9 @@ package racingcar;
 
 import java.util.List;
 
+/**
+ * 게임 결과를 출력하는 클래스
+ */
 public class OutputView {
     public void printRaceStart() {
         System.out.println("\n실행 결과");
